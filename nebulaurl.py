@@ -2,7 +2,6 @@
 """
 Red Society - Academia de Tecnologías de la Información
 Módulo Educativo: Análisis de Estructuras de URLs y Ofuscación (RFC 3986)
-Proyecto: NebulaURL (Simulador de Enmascaramiento Ético)
 Propósito: Demostración técnica de manipulación de parámetros de autenticación en HTTP.
 """
 
@@ -18,10 +17,13 @@ except ImportError:
     print("    Instálalas ejecutando: pip3 install pyshorteners")
     sys.exit(1)
 
-# Paleta de colores ANSI - Lila Cósmico y Celeste Elíptico
-LILA = '\033[38;5;141m'       
-CELESTE = '\033[38;5;81m'      
+# Paleta de colores para la interfaz de la consola
 RED = '\033[31m'
+GREEN = '\033[32m'
+CYAN = '\033[36m'
+YELLOW = '\033[33m'
+LILA = '\033[35m'
+CELESTE = '\033[36m'
 RESET = '\033[0m'
 
 VERSION = '1.0.0'
@@ -48,7 +50,7 @@ def mostrar_banner():
     
     # Rótulo del software institucional
     print(f"    {LILA}=================================================={RESET}")
-    print(f"    {CELESTE}          N  E  B  U  L  A    U  R  L              {RESET}")
+    print(f"    {CELESTE}          N  E  B  U  L  A   U  R  L              {RESET}")
     print(f"    {LILA}=================================================={RESET}")
     print(f"    {CELESTE}╰➤ Academia    : {RESET}Red Society")
     print(f"    {CELESTE}╰➤ Laboratorio : {RESET}Analizador Sintáctico RFC 3986")
@@ -57,46 +59,47 @@ def mostrar_banner():
     
     # Deslinde de responsabilidad
     print(f"{RED}    ------------ DESLINDE DE RESPONSABILIDAD ------------")
-    print("    Este script ha sido diseñado exclusivamente con fines pedagógicos")
-    print("    para demostrar fallas de percepción visual en la sintaxis HTTP.")
+    print("    Este script ha sido diseñado exclusivamente con fines pedagogicos")
+    print("    para demostrar fallas de percepcion visual en la sintaxis HTTP.")
     print(f"    El autor no promueve ni se responsabiliza por su mal uso.{RESET}\n")
 
 def validar_url_objetivo(url):
-    """Valida que la URL de entrada tenga un formato web estructurado."""
+    """Valida que la URL de entrada tenga un formato web estruturado."""
     patron = re.compile(r'^https?://[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(:\d{1,5})?(/.*)?$')
     if not patron.match(url):
-        raise ValueError("Formato de URL inválido. Debe incluir http:// o https://")
+        raise ValueError("Formato de URL invalido. Debe incluir http:// o https://")
 
 def validar_dominio_simulado(dominio):
-    """Asegura que el dominio de simulación no contenga caracteres extraños."""
+    """Asegura que el dominio de simulacion no contenga caracteres extranos o espacios."""
     patron = re.compile(r'^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
     if not patron.match(dominio):
-        raise ValueError("Dominio simulado inválido. Ejemplo correcto: gmail.com")
+        raise ValueError("Dominio simulado invalido. Ejemplo correcto: whatsapp.com")
 
-def limpiar_palabras_clave(texto):
-    """Verifica la longitud y formato de las etiquetas de texto."""
+def limpiar_ingenieria_social(texto):
+    """Verifica que el argumento de ingeniería social no contenga espacios ni caracteres raros."""
     texto_limpio = texto.strip()
     if " " in texto_limpio:
-        raise ValueError("Las palabras clave no deben contener espacios. Use guiones '-'")
-    if len(texto_limpio) > 20:
-        raise ValueError("Las palabras clave no deben exceder los 20 caracteres.")
+        raise ValueError("El texto de ingeniería social no debe contener espacios. Usa guiones '-'")
+    if len(texto_limpio) > 25:
+        raise ValueError("El texto descriptivo no debe exceder los 25 caracteres.")
     return texto_limpio
 
-def enmascarar_cadena(dominio, etiqueta, url_acortada):
+def enmascarar_cadena(dominio, texto_is, url_acortada):
     """
-    Aplica la lógica del RFC 3986 interpretando el texto previo al '@'
-    como parámetros de autenticación de usuario.
+    Aplica la logica del RFC 3986 interpretando el texto previo al '@'
+    como parametros de autenticacion de usuario.
     """
     url_parseada = urlparse(url_acortada)
-    return f"{url_parseada.scheme}://{dominio}-{etiqueta}@{url_parseada.netloc}{url_parseada.path}"
+    # Estructura corregida: esquema://dominio_simulado-texto_is@host_real/ruta
+    return f"{url_parseada.scheme}://{dominio}-{texto_is}@{url_parseada.netloc}{url_parseada.path}"
 
 def main():
     mostrar_banner()
     
-    # Bloque de captura y validación de datos
+    # Bloque de captura y validacion de datos (3 Preguntas Completas)
     while True:
         try:
-            enlace_real = input(f"{CELESTE}[?] Ingrese la URL real del laboratorio (ej. Ngrok): {RESET}").strip()
+            enlace_real = input(f"{GREEN}[?] Ingrese la URL real del laboratorio (ej. Ngrok): {RESET}").strip()
             validar_url_objetivo(enlace_real)
             break
         except ValueError as err:
@@ -104,15 +107,28 @@ def main():
 
     while True:
         try:
-            dominio_falso = input(f"{LILA}[?] Ingrese el dominio de referencia (ej. whatsapp.com): {RESET}").strip()
+            dominio_falso = input(f"{YELLOW}[?] Ingrese el dominio de referencia (ej. whatsapp.com): {RESET}").strip()
             validar_dominio_simulado(dominio_falso)
             break
         except ValueError as err:
             print(f"{RED}[!] {err}{RESET}")
 
-    print(f"\n{LILA}[*] Conectando con los proveedores de acortamiento de NebulaURL...{RESET}\n")
+    while True:
+        try:
+            texto_is = input(f"{CYAN}[?] Ingrese el texto de ingeniería social (ej. login-secure): {RESET}").strip()
+            texto_is = limpiar_ingenieria_social(texto_is)
+            break
+        except ValueError as err:
+            print(f"{RED}[!] {err}{RESET}")
+
+    print(f"\n{YELLOW}[*] Conectando con los proveedores de acortamiento de NebulaURL...{RESET}\n")
     
-    # Inicialización del motor de acortamiento
+    # Dibujar la cabecera de la tabla ajustada para visualizar el texto completo
+    print(f"{CYAN}{'-'*30}┬{'-'*65}{RESET}")
+    print(f" {CYAN}Simulated Context / Domain{RESET}     │ {CYAN}Resulting Link (NebulaURL){RESET}")
+    print(f"{CYAN}{'-'*30}┼{'-'*65}{RESET}")
+
+    # Inicializacion del motor de acortamiento
     instancia_short = pyshorteners.Shortener()
     servidores = [
         ("TinyURL", instancia_short.tinyurl),
@@ -120,29 +136,24 @@ def main():
         ("ClckRu", instancia_short.clckru)
     ]
 
-    # Estructura de tabla limpia y elegante en consola
-    print(f"{LILA}┌──────────────────────┬─────────────────────────────────────────────────────────────┐")
-    print(f"│ {CELESTE}Simulated Domain     {LILA}│ {CELESTE}Resulting Link (NebulaURL)                                  {LILA}│")
-    print(f"├──────────────────────┼─────────────────────────────────────────────────────────────┤{RESET}")
-    
     enlaces_generados = 0
 
     for nombre, servicio in servidores:
         try:
             url_corta = servicio.short(enlace_real)
-            resultado_final = enmascarar_cadena(dominio_falso, acento_etiqueta, url_corta)
+            # Pasamos las tres variables para construir de forma segura el enlace interactivo
+            resultado_final = enmascarar_cadena(dominio_falso, texto_is, url_corta)
             
-            # Ajuste de espacios exacto para Kali
-            col_api = f"[API: {nombre}.com]".ljust(20)
-            print(f"{LILA}│{RESET} {col_api} {LILA}│{RESET} {resultado_final}")
+            contexto_visual = f"{dominio_falso}-{texto_is}"
+            print(f" {contexto_visual:<28} │ {GREEN}{resultado_final}{RESET}")
             enlaces_generados += 1
         except Exception:
             continue
 
-    print(f"{LILA}└──────────────────────┴─────────────────────────────────────────────────────────────┘{RESET}")
+    print(f"{CYAN}{'-'*30}┴{'-'*65}{RESET}\n")
 
     if enlaces_generados == 0:
-        print(f"\n{RED}[!] Todos los proveedores externos rechazaron la URL debido a políticas de restricción de dominios dev/app.{RESET}")
+        print(f"{RED}[!] Error técnico: No se pudo conectar con las APIs de acortamiento. Verifique su conexión.{RESET}")
 
 if __name__ == "__main__":
     try:
