@@ -11,13 +11,13 @@ Markdown
 
 ```bash
 git clone [https://github.com/redsocietydev/nebulaurl.git](https://github.com/redsocietydev/nebulaurl.git)
-Bash
+```bash
 cd nebulaurl
-Bash
+```bash
 sudo apt update && sudo apt install python3 python3-pip -y
-Bash
+```bash
 pip3 install pyshorteners
-Bash
+```bash
 chmod +x nebulaurl.py
-Bash
+```bash
 ./nebulaurl.py
