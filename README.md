@@ -10,7 +10,7 @@ Markdown
 ### Kali Linux / Arch Linux / Ubuntu / Fedora / Parrot OS / Termux
 
 ```bash
-git clone [https://github.com/redsocietydev/nebulaurl.git](https://github.com/redsocietydev/nebulaurl.git)
+git clone https://github.com/redsocietydev/nebulaurl.git
 ```
 
 ```bash
