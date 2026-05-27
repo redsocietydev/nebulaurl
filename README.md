@@ -35,3 +35,9 @@ chmod +x nebulaurl.py
 ```bash
 ./nebulaurl.py
 ```
+
+## 🤝 Colaboraciones y Soporte
+
+¡Tu participación hace la diferencia! Si encuentras algún fallo durante el laboratorio, deseas proponer nuevas funciones o tienes ideas para optimizar el código, eres más que bienvenido a abrir un *issue* o enviar un *pull request*.
+
+Si este laboratorio te ha sido de utilidad para tu aprendizaje, ¡apóyanos dejándonos una estrella! ⭐️
