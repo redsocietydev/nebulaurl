@@ -1,6 +1,4 @@
-### **NebulaURL es una herramienta de código abierto de ofuscación de enlaces, diseñada para ayudarte a analizar la estructura de las URLs y comprender las técnicas de enmascaramiento mediante simulaciones de ingeniería social.**
-
-### **Esta herramienta es una Prueba de Concepto y tiene únicamente Fines Educativos.**
+### **NebulaURL es una herramienta de código abierto diseñada para analizar la estructura de enlaces y comprender las técnicas de enmascaramiento mediante simulaciones de ingeniería social.**
 
 ## Probado en :
 
