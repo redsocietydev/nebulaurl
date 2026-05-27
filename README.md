@@ -7,7 +7,7 @@ Markdown
 
 ## Instalación
 
-### Kali Linux / Arch Linux / Ubuntu / Fedora / Parrot OS / Termux
+### Kali Linux / Ubuntu / Parrot OS
 
 ```bash
 git clone https://github.com/redsocietydev/nebulaurl.git
