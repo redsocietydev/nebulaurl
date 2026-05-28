@@ -21,19 +21,17 @@ cd nebulaurl
 python3 -m venv venv
 
 # 3. Activar el entorno virtual
-source venv/bin/activate
+./venv/bin/pip install -r requirements.txt
 
-# 4. Instalar las librerías necesarias desde el archivo de requerimientos
-pip3 install -r requirements.txt
 ```
 
 ```bash
-# 5. Asignar permisos de ejecución al script
+# 4. Asignar permisos de ejecución al script
 chmod +x nebulaurl.py
 ```
 
 ```bash
-# 6. Ejecuta el script
+# 5. Ejecuta el script
 ./nebulaurl.py
 ```
 
