@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env ./venv/bin/python3
 """
 Red Society - Academia de Tecnologías de la Información
 Módulo Educativo: Análisis de Estructuras de URLs y Ofuscación (RFC 3986)
