@@ -11,27 +11,29 @@
 ### Kali Linux / Ubuntu / Parrot OS
 
 ```bash
+# 1. Clonar el repositorio y acceder a la carpeta
 git clone https://github.com/redsocietydev/nebulaurl.git
+cd nebulaurl
 ```
 
 ```bash
-# Crear el entorno virtual
+# 2. Crear el entorno virtual
 python3 -m venv venv
 
-# Activar el entorno virtual
+# 3. Activar el entorno virtual
 source venv/bin/activate
 
-# Instalar las librerías necesarias desde el archivo de requerimientos
+# 4. Instalar las librerías necesarias desde el archivo de requerimientos
 pip3 install -r requirements.txt
 ```
 
 ```bash
-# Asignar permisos de ejecución al script
+# 5. Asignar permisos de ejecución al script
 chmod +x nebulaurl.py
 ```
 
 ```bash
-# Ejecuta el script
+# 6. Ejecuta el script
 ./nebulaurl.py
 ```
 
