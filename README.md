@@ -15,22 +15,23 @@ git clone https://github.com/redsocietydev/nebulaurl.git
 ```
 
 ```bash
-cd nebulaurl
-````
+# Crear el entorno virtual
+python3 -m venv venv
 
-```bash
-sudo apt update && sudo apt install python3 python3-pip -y
+# Activar el entorno virtual
+source venv/bin/activate
+
+# Instalar las librerías necesarias desde el archivo de requerimientos
+pip3 install -r requirements.txt
 ```
 
 ```bash
-pip3 install pyshorteners
-```
-
-```bash
+# Asignar permisos de ejecución al script
 chmod +x nebulaurl.py
 ```
 
 ```bash
+# Ejecuta el script
 ./nebulaurl.py
 ```
 
